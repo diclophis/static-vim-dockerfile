@@ -33,13 +33,14 @@ update: $(SRCDEP)
 	cd vim-src; \
 	echo 'Checking for updates...'; \
 	git fetch origin; \
-	if ! git diff origin/master HEAD --quiet; then \
-		$(MAKE) -C .. -s clean; \
-		git merge origin/master; \
-	else \
-		echo 'No updates found.'; \
-		exit 1; \
-	fi
+	$(MAKE) -C .. -s clean;
+	#if ! git diff origin/master HEAD --quiet; then \
+	#	$(MAKE) -C .. -s clean; \
+	#	git merge origin/master; \
+	#else \
+	#	echo 'No updates found.'; \
+	#	exit 1; \
+	#fi
 
 vim-src/src/auto/config.status: $(SRCDEP)
 	cd vim-src && \
@@ -137,7 +138,7 @@ uninstall:
 
 clean:
 	@rm -v -f $(DISTTARGET) vim-src/.config.h-modified vim-src/src/*.orig
-	@cd vim-src && git reset --hard && git clean -x -f -d -q
+	@cd vim-src && git checkout v8.1.0885 && git reset --hard && git clean -x -f -d -q
 
 cleanest:
 	rm -rf vim-src
