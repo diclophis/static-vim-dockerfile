@@ -44,7 +44,7 @@ update: $(SRCDEP)
 vim-src/src/auto/config.status: $(SRCDEP)
 	cd vim-src && \
 	CFLAGS="-fPIE -DFEAT_CONCEAL=1" LDFLAGS="-static -pie" ./configure \
-		--prefix=/dev/null/SET_THE_VIMRUNTIME_ENVIRONMENT_VARIABLE \
+		--prefix=/usr \
 		--disable-gpm \
 		--disable-gtktest \
 		--disable-gui \
