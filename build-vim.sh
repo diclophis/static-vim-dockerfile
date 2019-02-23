@@ -5,6 +5,8 @@ set -x
 
 cd /var/tmp/build 
 
+make -j update
+
 make -j
 
 ls -lh vim-src/src/vim
